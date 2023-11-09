@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1dffc318-2377-4bdd-b0f9-7c8105409798" name="Changes" comment="" />
+    <list default="true" id="1dffc318-2377-4bdd-b0f9-7c8105409798" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/part1/MainPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/part1/font/Yeongdeok_Haeparang.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/part1/font/Yeongdeok_Sea.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPacage/MainPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/font/Yeongdeok_Haeparang.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/font/Yeongdeok_Sea.ttf" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
