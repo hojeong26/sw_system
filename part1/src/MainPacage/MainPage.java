@@ -104,17 +104,17 @@ public class MainPage extends JFrame {
 //        gbc.fill = GridBagConstraints.NONE;
         gbc.gridx = 0;
         gbc.gridy=0;
-        gbc.insets = new Insets(0, 0, 0, 60);
+        gbc.insets = new Insets(0, 0, 0, 65);
         leftPanel.add(level1, gbc);
-        gbc.insets = new Insets(0, 100, 0, 30);
+        gbc.insets = new Insets(0, 100, 0, 35);
         leftPanel.add(level2, gbc);
-        gbc.insets = new Insets(0, 200, 0, 10);
+        gbc.insets = new Insets(0, 200, 0, 0);
         leftPanel.add(level3, gbc);
 
         //게임 시작 label
         JLabel label_gameStart;
         try {
-            Image imageFile = ImageIO.read(MainPage.class.getResource("../image/yongyong2.png"));
+            Image imageFile = ImageIO.read(MainPage.class.getResource("../image/button.png"));
             Image imgTriangle = imageFile.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
             ImageIcon image_triangle = new ImageIcon(imgTriangle);
             label_gameStart = new JLabel("게임 시작", image_triangle, SwingConstants.CENTER);
@@ -124,14 +124,54 @@ public class MainPage extends JFrame {
 
         gbc.gridx = 0;
         gbc.gridy = 1;
-        gbc.gridwidth = 3;
-        gbc.insets = new Insets(0, 0, 20, 0);
+        gbc.gridwidth = 4;
+        gbc.insets = new Insets(0, 0, 0, 0);
         label_gameStart.setFont(new Font("맑은 고딕", Font.BOLD, 45));
         leftPanel.add(label_gameStart, gbc);
 
+        //난이도 선택 안했는데 게임 시작 Label클릭 했을 때
+        JLabel level_label = new JLabel("난이도를 선택해주세요.");
+        level_label.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+        label_gameStart.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (!level1.isSelected() && !level2.isSelected() && !level3.isSelected()) {
+                    // 라디오 버튼이 선택되지 않은 경우 라벨 아래에 메시지 업데이트
+//                    gbc.gridy++;
+                    GridBagConstraints gbc = new GridBagConstraints();
+                    gbc.gridx = 0;
+                    gbc.gridy = 2; // label_gameStart 아래에 위치하도록 함
+                    gbc.gridwidth = 3;
+                    gbc.insets = new Insets(0, 50, 10, 0);
+                    leftPanel.add(level_label, gbc);  // 기존 gbc를 사용
+                    leftPanel.revalidate();
+                    leftPanel.repaint();
+                }
+            }
+        });
+        //라디오 버튼 선택되면 다시 label사라짐
+        ItemListener itemListener = new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                //컴포넌트 리스트로 만들기
+                Component[] components = leftPanel.getComponents();
+                for (Component component : components) {
+                    if (component == level_label) {
+                        leftPanel.remove(level_label);
+                        break;
+                    }
+                }
+            }
+        };
+
+        level1.addItemListener(itemListener);
+        level2.addItemListener(itemListener);
+        level3.addItemListener(itemListener);
+
+        //정보열람 label
         JLabel label_infoPage;
         try {
-            Image imageFile = ImageIO.read(MainPage.class.getResource("../image/yongyong2.png"));
+            Image imageFile = ImageIO.read(MainPage.class.getResource("../image/button.png"));
             Image imgTriangle = imageFile.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
             ImageIcon image_triangle = new ImageIcon(imgTriangle);
             label_infoPage = new JLabel("정보 열람", image_triangle, SwingConstants.CENTER);
@@ -140,13 +180,13 @@ public class MainPage extends JFrame {
         }
         gbc.gridx = 0;
         gbc.gridy = 3;
-        gbc.anchor = GridBagConstraints.LAST_LINE_START;
         leftPanel.add(label_infoPage, gbc);
         label_infoPage.setFont(new Font("맑은 고딕", Font.BOLD, 45));
 
+        //설정 label
         JLabel label_setting;
         try {
-            Image imageFile = ImageIO.read(MainPage.class.getResource("../image/yongyong2.png"));
+            Image imageFile = ImageIO.read(MainPage.class.getResource("../image/button.png"));
             Image imgTriangle = imageFile.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
             ImageIcon image_triangle = new ImageIcon(imgTriangle);
             label_setting = new JLabel("설정", image_triangle, SwingConstants.CENTER);
@@ -160,6 +200,34 @@ public class MainPage extends JFrame {
         leftPanel.add(label_setting, gbc);
         label_setting.setFont(new Font("맑은 고딕", Font.BOLD, 45));
 
+        //bgm버튼
+        ButtonGroup bgmGroup = new ButtonGroup();
+        JLabel bgm_label = new JLabel("bgm");
+        bgm_label.setFont(new Font("맑은 고딕", Font.PLAIN, 10));
+        JButton bgm_on = new JButton("On");
+        bgm_on.setBackground(new Color(237,227,206));
+        JButton bgm_off = new JButton("Off");
+        bgm_off.setBackground(new Color(237,227,206));
+        bgmGroup.add(bgm_off);
+        bgmGroup.add(bgm_on);
+        label_setting.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+//                GridBagConstraints gbc = new GridBagConstraints();
+                gbc.gridx = 1;
+                gbc.gridy = 4; // label_gameStart 아래에 위치하도록 함
+                gbc.gridwidth = 1;
+                gbc.insets = new Insets(0, 0, 0, 0);
+                leftPanel.add(bgm_label, gbc);
+
+                // bgm_on, bgm_off 버튼 추가
+                leftPanel.add(bgm_on, gbc);
+                gbc.gridx++; // 오른쪽으로 이동
+                leftPanel.add(bgm_off, gbc); // 기존 gbc를 사용
+                leftPanel.revalidate();
+                leftPanel.repaint();
+            }
+        });
 
         // 오른쪽 패널에 이미지 추가 (예제에서는 빈 레이블로 대체)
         JPanel rightPanel = new JPanel();
@@ -169,7 +237,7 @@ public class MainPage extends JFrame {
         //이미지 삽입
         try {
             Image main_page_logo = ImageIO.read(MainPage.class.getResource("../image/yongyong1.png"));
-            Image img_logo_scal = main_page_logo.getScaledInstance(350, 350, Image.SCALE_SMOOTH);
+            Image img_logo_scal = main_page_logo.getScaledInstance(370, 400, Image.SCALE_SMOOTH);
             ImageIcon img_logo = new ImageIcon(img_logo_scal);
             JLabel main_logo = new JLabel(img_logo);
             rightPanel.add(main_logo);
