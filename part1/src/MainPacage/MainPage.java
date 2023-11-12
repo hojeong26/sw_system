@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import javax.imageio.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
 
 class CustomRadioButton extends JRadioButton {
     public CustomRadioButton(String text) {
@@ -122,7 +124,7 @@ public class MainPage extends JFrame {
             throw new RuntimeException(e);
         }
 
-        gbc.gridx = 0;
+//        gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 4;
         gbc.insets = new Insets(0, 0, 0, 0);
@@ -137,9 +139,8 @@ public class MainPage extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 if (!level1.isSelected() && !level2.isSelected() && !level3.isSelected()) {
                     // 라디오 버튼이 선택되지 않은 경우 라벨 아래에 메시지 업데이트
-//                    gbc.gridy++;
                     GridBagConstraints gbc = new GridBagConstraints();
-                    gbc.gridx = 0;
+//                    gbc.gridx = 0;
                     gbc.gridy = 2; // label_gameStart 아래에 위치하도록 함
                     gbc.gridwidth = 3;
                     gbc.insets = new Insets(0, 50, 10, 0);
@@ -178,7 +179,7 @@ public class MainPage extends JFrame {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        gbc.gridx = 0;
+//        gbc.gridx = 0;
         gbc.gridy = 3;
         leftPanel.add(label_infoPage, gbc);
         label_infoPage.setFont(new Font("맑은 고딕", Font.BOLD, 45));
@@ -193,7 +194,7 @@ public class MainPage extends JFrame {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        gbc.gridx = 0;
+//        gbc.gridx = 0;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
         gbc.anchor = GridBagConstraints.LAST_LINE_START;
@@ -203,29 +204,63 @@ public class MainPage extends JFrame {
         //bgm버튼
         ButtonGroup bgmGroup = new ButtonGroup();
         JLabel bgm_label = new JLabel("bgm");
-        bgm_label.setFont(new Font("맑은 고딕", Font.PLAIN, 10));
+        bgm_label.setFont(new Font("맑은 고딕", Font.BOLD, 16));
         JButton bgm_on = new JButton("On");
-        bgm_on.setBackground(new Color(237,227,206));
+        bgm_on.setRolloverEnabled(false);
+        bgm_on.setFocusPainted(false);
+        bgm_on.setBackground(new Color(125,159,104));
         JButton bgm_off = new JButton("Off");
+        bgm_off.setRolloverEnabled(false);
+        bgm_off.setFocusPainted(false);
         bgm_off.setBackground(new Color(237,227,206));
-        bgmGroup.add(bgm_off);
         bgmGroup.add(bgm_on);
+        bgmGroup.add(bgm_off);
+        //설정 label클릭하면
         label_setting.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                GridBagConstraints gbc = new GridBagConstraints();
-                gbc.gridx = 1;
-                gbc.gridy = 4; // label_gameStart 아래에 위치하도록 함
-                gbc.gridwidth = 1;
-                gbc.insets = new Insets(0, 0, 0, 0);
-                leftPanel.add(bgm_label, gbc);
+                if (bgm_on.getParent() == null) {
+                    GridBagConstraints gbc3 = new GridBagConstraints();
+                    gbc3.gridx = 0;
+                    gbc3.gridy = 4;
+                    gbc3.gridwidth = 1;
+                    gbc3.anchor = GridBagConstraints.NORTH;
+                    gbc3.insets = new Insets(0, 100, 0, 0);
+                    leftPanel.add(bgm_label, gbc3);
 
-                // bgm_on, bgm_off 버튼 추가
-                leftPanel.add(bgm_on, gbc);
-                gbc.gridx++; // 오른쪽으로 이동
-                leftPanel.add(bgm_off, gbc); // 기존 gbc를 사용
-                leftPanel.revalidate();
-                leftPanel.repaint();
+                    // bgm_on, bgm_off 버튼 추가
+                    gbc3.anchor = GridBagConstraints.SOUTH;
+                    gbc3.insets = new Insets(0, 100, 0, 0);
+                    leftPanel.add(bgm_on, gbc3);
+                    gbc3.insets = new Insets(0, 200, 0, 0);
+                    leftPanel.add(bgm_off, gbc3); // 기존 gbc를 사용
+                    leftPanel.revalidate();
+                    leftPanel.repaint();
+                }else{
+                    leftPanel.remove(bgm_on);
+                    leftPanel.remove(bgm_off);
+                    leftPanel.remove(bgm_label);
+                    leftPanel.revalidate();
+                    leftPanel.repaint();
+                }
+            }
+        });
+
+        bgm_on.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 버튼을 클릭했을 때 배경색을 변경합니다.
+                bgm_on.setBackground(new Color(125,159,104)); // 색 변경
+                bgm_off.setBackground(new Color(237,227,206));
+            }
+        });
+
+        bgm_off.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 버튼을 클릭했을 때 배경색을 변경합니다.
+                bgm_off.setBackground(new Color(125,159,104)); // 색 변경
+                bgm_on.setBackground(new Color(237,227,206));
             }
         });
 
