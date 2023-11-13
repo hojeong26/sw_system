@@ -58,8 +58,38 @@ class CustomRadioButton extends JRadioButton {
     }
 }
 
+//폰트 클래스
+class utility{
+    public static Font setFont1(float size) {
+        Font font1 = null;
+        try {
+            File fontFile = new File("src/font/Yeongdeok Haeparang.ttf");
+            font1 = Font.createFont(Font.TRUETYPE_FONT, fontFile).deriveFont(size);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, fontFile));
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+        }
+        return font1;
+    }
+    public static Font setFont2(float size) {
+        Font font2 = null;
+        try {
+            File fontFile = new File("src/font/Yeongdeok Sea.ttf");
+            font2 = Font.createFont(Font.TRUETYPE_FONT, fontFile).deriveFont(size);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, fontFile));
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+        }
+        return font2;
+    }
+}
+
 public class MainPage extends JFrame {
-    public MainPage() {
+    public MainPage(String titlename) {
+        super(titlename);
+
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension screenSize = toolkit.getScreenSize();
         int laptopWidth = (int) (screenSize.getWidth() * 0.7);
@@ -75,7 +105,6 @@ public class MainPage extends JFrame {
             e.printStackTrace();
         }
 
-        setTitle("엎어라 뒤집어라_Main Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(laptopWidth, laptopHeight);
 
@@ -98,6 +127,9 @@ public class MainPage extends JFrame {
         level1.setBackground(Color.WHITE);
         level2.setBackground(Color.WHITE);
         level3.setBackground(Color.WHITE);
+
+        Font fontB = utility.setFont1(16);
+        level1.setFont(fontB);
 
         levelGroup.add(level1);
         levelGroup.add(level2);
@@ -290,7 +322,9 @@ public class MainPage extends JFrame {
         setVisible(true);
     }
     public static void main(String[] args) {
-
-        MainPage mp = new MainPage();
+        MainPage mp = new MainPage("엎어라 뒤집어라_Main Page");
+        PauseFinishPage pausepage = new PauseFinishPage("엎어라 뒤집어라_Pause Page");
+        FinishPage finishpage = new FinishPage("엎어라 뒤집어라_Finish Page");
+//        PauseFinishPage finishpage = new PauseFinishPage("엎어라 뒤집어라_Finish Page");
     }
 }
