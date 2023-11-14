@@ -28,6 +28,7 @@ class PauseFinishButton extends JButton {
         repaint();
     }
 
+    //버튼 커스텀
     @Override
     protected void paintComponent(Graphics g) {
         int width = getWidth();

@@ -22,7 +22,9 @@ class LevelRadiobutton extends JRadioButton {
         levelGroup.add(this);
 
         addEventListeners();
+
     }
+    //라디오 버튼 관련 이벤트들
     private void addEventListeners() {
         // 마우스 이벤트 처리
         addMouseListener(new MouseAdapter() {
@@ -51,6 +53,16 @@ class LevelRadiobutton extends JRadioButton {
             public void actionPerformed(ActionEvent e) {
                 // 클릭 시 글꼴을 bold체로 설정
                 setFont(radioButtonScalFont);
+                //난이도 선택시 문구 사라짐
+                Component[] components = MainPage.leftPanel.getComponents();
+                for (Component component : components) {
+                    if (component == MainPage.level1) {
+                        MainPage.leftPanel.remove(LabelStartEvent.message);
+                        MainPage.leftPanel.revalidate();
+                        MainPage.leftPanel.repaint();
+                        break;
+                    }
+                }
 
                 // 다른 라디오 버튼을 선택하면 현재 라디오 버튼의 글꼴을 원래대로 설정
                 ButtonModel model = getModel();
@@ -60,7 +72,7 @@ class LevelRadiobutton extends JRadioButton {
             }
         });
 
-        // 아이콘 변경 시 글꼴을 원래대로 설정
+        // 라디오버튼 다른거 선택 시 글꼴을 원래대로 설정
         addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {

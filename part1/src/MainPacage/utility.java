@@ -8,6 +8,8 @@ import java.io.IOException;
 class utility {
     static Color basecolor = new Color(237,227,206);
     static Color maincolor = new Color(125,159,104);
+    static Color pointcolor = new Color(80,102,67);
+    static Color pausefinishpagecolor = new Color(255,255,255,220);
     public static Font yeongdeok_haeparang(float size) {
         Font yeongdeok_haeparang= null;
         try {

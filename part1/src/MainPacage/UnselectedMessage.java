@@ -7,7 +7,7 @@ class UnselectedMessage extends JLabel {
     Font unselectedMessageFont = utility.yeongdeok_sea(18);
     public UnselectedMessage(String unselectedmessage){
         super(unselectedmessage);
-//        Font unselectedMessageFont = utility.yeongdeok_sea(18);
+        setForeground(utility.pointcolor);
         setFont(unselectedMessageFont);
     }
 }
