@@ -6,8 +6,8 @@ import java.awt.*;
 import java.io.IOException;
 
 class PauseFinishButton extends JButton {
-    private int buttonwidth = 200;
-    private int buttonheight = 50;
+    private final int buttonwidth = 200;
+    private final int buttonheight = 50;
     private ImageIcon buttonIcon;
     public PauseFinishButton(String imagepath){
 //        decorate();
@@ -24,8 +24,8 @@ class PauseFinishButton extends JButton {
             throw new RuntimeException(e);
         }
 
-        revalidate();
-        repaint();
+//        revalidate();
+//        repaint();
     }
 
     //버튼 커스텀
@@ -62,6 +62,6 @@ class PauseFinishButton extends JButton {
 
         graphics.dispose();
 
-        super.paintComponent(g);
+//        super.paintComponent(g);
     }
 }

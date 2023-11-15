@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 class OnOffButton extends JButton {
-    Font onOffFont = utility.yeongdeok_sea(12);
-    ButtonGroup bgmGroup = new ButtonGroup();
+    private Font onOffFont = utility.yeongdeok_sea(12);
+    private ButtonGroup bgmGroup = new ButtonGroup();
     public OnOffButton(String buttonText,Color onOffBakColor){
         super(buttonText);
         setRolloverEnabled(false);
