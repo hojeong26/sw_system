@@ -56,7 +56,7 @@ class LevelRadiobutton extends JRadioButton {
                 //난이도 선택시 문구 사라짐
                 Component[] components = MainPage.leftPanel.getComponents();
                 for (Component component : components) {
-                    if (component == MainPage.level1) {
+                    if (component == LabelStartEvent.message) {
                         MainPage.leftPanel.remove(LabelStartEvent.message);
                         MainPage.leftPanel.revalidate();
                         MainPage.leftPanel.repaint();
