@@ -4,6 +4,11 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * 테스트용 클래스
+ * 게임화면 클래스라 생각하고 기능 재현
+ * 버튼을 누르면 버튼에 맞는 Panel(일시정지 Panel,종료 Panel)이 생김
+ */
 class TestFrame extends JFrame{
     private JPanel existingPanel;
     public TestFrame(String text){

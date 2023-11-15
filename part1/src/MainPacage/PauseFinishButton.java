@@ -5,10 +5,23 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+/**
+ * 일시정지 화면과 종료 화면에 만들어질 버튼 객체를 생성하는 클래스
+ * 일시정지 화면과 종료 화면에 생성되는 버튼의 모양이 똑같아서 하나의 클래스로 정의함
+ */
 class PauseFinishButton extends JButton {
+    /**버튼의 가로 길이 저장한 변수*/
     private final int buttonwidth = 200;
+    /**버튼의 세로 길이 저장한 변수*/
     private final int buttonheight = 50;
+    /**버튼의 아이콘에 쓰일 아이콘 객체*/
     private ImageIcon buttonIcon;
+
+    /**
+     * PauseFinishButton클래스의 생성자
+     * 매개변수로 받은 경로로 아이콘을 저장하고 버튼을 생성
+     * @param imagepath 버튼 아이콘에 쓰일 이미지파일의 경로를 매개변수로 받음
+     */
     public PauseFinishButton(String imagepath){
 //        decorate();
         setPreferredSize(new Dimension(buttonwidth,buttonheight)); // 크기 조절
@@ -29,6 +42,7 @@ class PauseFinishButton extends JButton {
     }
 
     //버튼 커스텀
+    /**버튼의 모양을 둥글게 만들기 위한 메소드*/
     @Override
     protected void paintComponent(Graphics g) {
         int width = getWidth();

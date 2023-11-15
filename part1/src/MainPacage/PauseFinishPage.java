@@ -6,10 +6,22 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.*;
+
+/**
+ * 일시정지화면과 종료화면을 Panel로 만드는 클래스
+ */
 class PauseFinishPage extends JPanel {
 //    private JPanel pauseFinishPanel;
+    /**Panel에서 만들어진 버튼 중 위에 해당하는 객체*/
     private PauseFinishButton topButton;
+    /**Panel에서 만들어진 홈버튼 객체*/
     private PauseFinishButton homeButton;
+
+    /**
+     * PauseFinishPage클래스의 생성자
+     * 객체의 크기와 배경색을 지정하고 버튼 객체를 생성을 한다.
+     * @param buttonpath 버튼에 놓일 이미지 경로를 매개변수로 받음
+     */
     public PauseFinishPage(String titlename, String buttonpath) {
 //        setBackground(Color.BLACK);
 //        setTitle(titlename);
@@ -54,9 +66,19 @@ class PauseFinishPage extends JPanel {
         setVisible(true);
     }
     //객체의 Panel반환
+
+    /**
+     * 객체 자신을 반환하는 메소드
+     * @return 객체 자신을 반환
+     */
     public JPanel getPausePanel(){
         return this;
     }
+
+    /**
+     * homebutton에 적용되는 이벤트 메소드
+     * 이벤트가 발생할 시 새로운 프레임이 생성된다.
+     */
     private void openNewFrame() {
         //현재 객체의 부모요소 찾기
         JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
@@ -78,19 +100,36 @@ class PauseFinishPage extends JPanel {
         });
     }
 }
+
+/**일시정지 Panel 객체와 관련된 클래스*/
 class PausePage{
+    /**일시정지화면 Panel 객체를 저장하는 변수*/
     private JPanel pausePanel;
+    /**PausePage의 생성자로 Panel객체를 생성한다.
+     *PauseFinishPage클래스로 생성된 객체를 받아 변수에 저장
+     */
     public PausePage() {
         PauseFinishPage pause = new PauseFinishPage("엎어라 뒤집어라_Pause Page","../image/play.png");
         pausePanel = pause.getPausePanel();
         pausePanel.setBackground(utility.pausefinishpagecolor);
     }
+
+    /**
+     * 객체의 생성된 Panel을 반환하는 메소드
+     * @return 자기자신의 Panel반환
+     */
     public JPanel getPausePanel(){
         return this.pausePanel;
     }
 }
+/**종료 Panel 객체와 관련된 클래스*/
 class FinishPage{
+    /**종료화면 Panel 객체를 저장하는 변수*/
     private JPanel finishPanel;
+    /**FinishPage의 생성자로 Panel객체를 생성한다.
+     *PauseFinishPage클래스로 생성된 객체를 받아 변수에 저장
+     *또한 파일에 저장된 정보를 불러와 Panel에 추가하는 메소드
+     */
     public FinishPage() {
         PauseFinishPage finish = new PauseFinishPage("엎어라 뒤집어라_Finish Page","../image/replay.png");
         finishPanel = finish.getPausePanel();
@@ -130,6 +169,11 @@ class FinishPage{
         finishPanel.revalidate();
         finishPanel.repaint();
     }
+
+    /**
+     * 객체의 생성된 Panel을 반환하는 메소드
+     * @return 자기자신의 Panel반환
+     */
     public JPanel getFinishPanel(){
         return this.finishPanel;
     }
