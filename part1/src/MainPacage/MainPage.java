@@ -44,6 +44,12 @@ public class MainPage extends JFrame {
         leftPanel.setLayout(new GridBagLayout()); // GridBagLayout을 사용
         GridBagConstraints gbc = new GridBagConstraints();
 
+        GridBagConstraints gbc2 = new GridBagConstraints();
+        gbc2.weightx = 1.0; // 다른 컴포넌트와의 상대적인 크기 비율 조정
+        gbc2.weighty = 1.0;
+        gbc2.fill = GridBagConstraints.BOTH; // 두 가지 방향으로 확장
+        getContentPane().add(leftPanel, gbc2);
+
         //난이도 선택 라디오 버튼
         level1 = new LevelRadiobutton("하");
         level2 = new LevelRadiobutton("중");
@@ -77,11 +83,11 @@ public class MainPage extends JFrame {
         leftPanel.add(label_setting, gbc);
         addBgmControls();
 
-        GridBagConstraints gbc2 = new GridBagConstraints();
-        gbc2.weightx = 1.0; // 다른 컴포넌트와의 상대적인 크기 비율 조정
-        gbc2.weighty = 1.0;
-        gbc2.fill = GridBagConstraints.BOTH; // 두 가지 방향으로 확장
-        getContentPane().add(leftPanel, gbc2);
+//        GridBagConstraints gbc2 = new GridBagConstraints();
+//        gbc2.weightx = 1.0; // 다른 컴포넌트와의 상대적인 크기 비율 조정
+//        gbc2.weighty = 1.0;
+//        gbc2.fill = GridBagConstraints.BOTH; // 두 가지 방향으로 확장
+//        getContentPane().add(leftPanel, gbc2);
 
         createRightPanel();
         setVisible(true);
@@ -190,7 +196,25 @@ public class MainPage extends JFrame {
     }
 
     public static void main(String[] args) {
-        new MainPage("엎어라 뒤집어라_Main Page");
-        new TestFrame("테스트용");
+        //new MainPage("엎어라 뒤집어라_Main Page");
+        //new TestFrame("테스트용");
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Level1Timer().setVisible(true);
+            }
+        });
+//        SwingUtilities.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                new Level2Timer().setVisible(true);
+//            }
+//        });
+//        SwingUtilities.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                new Level3Timer().setVisible(true);
+//            }
+//        });
     }
 }
