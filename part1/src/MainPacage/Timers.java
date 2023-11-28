@@ -72,6 +72,11 @@ public class Timers extends JFrame {
 //        add(timerLabel);
         add(startButton);
     }
+    //나중에 점수 반환할 때 쓰임
+    public int getTimerValue(){
+        timer.stop();
+        return this.timerValue;
+    }
 }
 class Level1Timer extends Timers{
         public Level1Timer(){
