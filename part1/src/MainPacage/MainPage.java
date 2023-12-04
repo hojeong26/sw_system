@@ -196,8 +196,8 @@ public class MainPage extends JFrame {
     }
 
     public static void main(String[] args) {
-        //new MainPage("엎어라 뒤집어라_Main Page");
-        //new TestFrame("테스트용");
+        new MainPage("엎어라 뒤집어라_Main Page");
+        new TestFrame("테스트용");
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {

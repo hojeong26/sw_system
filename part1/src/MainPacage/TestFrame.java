@@ -18,6 +18,7 @@ class TestFrame extends JFrame{
         int laptopWidth = (int) (screenSize.getWidth() * 0.7);
         int laptopHeight = (int) (screenSize.getHeight() * 0.8);
         Container contentPane = getContentPane();
+        contentPane.setBackground(utility.maincolor);
 
         //타이틀 아이콘 변경
         try {
@@ -34,7 +35,7 @@ class TestFrame extends JFrame{
 
 
         existingPanel = new JPanel();
-        existingPanel.setBackground(utility.basecolor);
+        existingPanel.setBackground(Color.BLACK);
         existingPanel.setLayout(new CardLayout());
         contentPane.setLayout(new CardLayout());
 
@@ -45,6 +46,7 @@ class TestFrame extends JFrame{
 
         JPanel buttonPanel = new JPanel();
         existingPanel.add(buttonPanel);
+//        buttonPanel.setBackground(Color.BLACK);
         buttonPanel.setLayout(new GridBagLayout());
         buttonPanel.add(pausePanelButton);
         buttonPanel.add(finishPanelButton);
